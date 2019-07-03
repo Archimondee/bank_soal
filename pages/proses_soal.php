@@ -12,7 +12,7 @@ if (isset($_POST['action'])=='input_soal') {
   $id_category = $_POST['category'];
   $user_id = $_SESSION['user_id'];
 
-  $query = "INSERT INTO soal(pertanyaan, jawaban_a, jawaban_b, jawaban_c, jawaban_d, penjelasan, id_category, user_id) values('$soal','$jawabA','$jawabB', '$jawabC', '$jawabD', '$penjelasan', '$id_category', '$user_id')";
+  $query = "INSERT INTO soal(pertanyaan, jawaban_a, jawaban_b, jawaban_c, jawaban_d, jawaban, penjelasan, id_category, user_id) values('$soal','$jawabA','$jawabB', '$jawabC', '$jawabD','$jawaban', '$penjelasan', '$id_category', '$user_id')";
 
   if (mysqli_query($con, $query)) {
     $msg = 'Berhasil';
