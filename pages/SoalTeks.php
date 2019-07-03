@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+?>
 
 <head>
   <meta charset="utf-8">
@@ -27,6 +30,18 @@
   <link rel="stylesheet" href="../../toefl/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../../toefl/plugins/sweetalert2/sweetalert2.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../../toefl/plugins/toastr/toastr.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../toefl/dist/css/adminlte.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="../../toefl/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../toefl/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -45,11 +60,11 @@
       </ul>
 
       <!-- SEARCH FORM -->
-     
+
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
-        
+
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -58,8 +73,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="../../toefl/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="../../toefl/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AdminLTE 3</span>
       </a>
 
@@ -71,7 +85,7 @@
             <img src="../../toefl/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
           </div>
         </div>
 
@@ -79,7 +93,7 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+               with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -90,39 +104,45 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link active">
+                  <a href="./index.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Home</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./SoalTeks.html" class="nav-link ">
+                  <a href="./SoalTeks.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Input Bank Soal</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
+                  <a href="" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal IPA</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
+                  <a href="" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal MTK</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
+                  <a href="" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Indonesia</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
+                  <a href="" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Inggris</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Logout</p>
                   </a>
                 </li>
               </ul>
@@ -146,7 +166,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item active">Teks Section</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -155,77 +175,74 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>150</h3>
-
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                  <p>Bounce Rate</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <h3>44</h3>
-
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
-
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
+      <div class="col-sm-6">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Input Soal UN SMP</h3>
           </div>
-          <!-- /.row -->
-          <!-- Main row -->
-          
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-      </section>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form role="form" action="" method="post">
+            <div class="card-body">
+              <div class="form-group">
+                <label>Pilih Kategori</label>
+                <select class="form-control" id="category">
+                  <option value="ipa">Ilmu Pengetahuan Alam</option>
+                  <option value="inggris">Bahasa Inggris</option>
+                  <option value="mtk">Matematika</option>
+                  <option value="indo">Bahasa Indonesia</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Soal Pertanyaan</label>
+                <textarea class="form-control" rows="3" placeholder="Pertanyaan ..." id="soal"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Jawaban A</label>
+                <input type="text" class="form-control" id="jawabA" placeholder="Jawaban A">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Jawaban B</label>
+                <input type="text" class="form-control" id="jawabB" placeholder="Jawaban B">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Jawaban C</label>
+                <input type="text" class="form-control" id="jawabC" placeholder="Jawaban C">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Jawaban D</label>
+                <input type="text" class="form-control" id="jawabD" placeholder="Jawaban D">
+              </div>
+              <label for="exampleInputEmail1">Pilih Jawaban</label>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="jawaban" id="jawaban" value="A">
+                <label class="form-check-label" for="exampleCheck1">A</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="jawaban" id="jawaban" value="B">
+                <label class="form-check-label" for="exampleCheck1">B</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="jawaban" id="jawaban" value="C">
+                <label class="form-check-label" for="exampleCheck1">C</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name="jawaban" id="jawaban" value="D">
+                <label class="form-check-label" for="exampleCheck1">D</label>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Penjelasan Soal</label>
+                <textarea class="form-control" rows="3" placeholder="Penjelasan ..." id="penjelasan"></textarea>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button onclick="input_soal()" type="button" class="btn btn-primary" name="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -281,6 +298,72 @@
   <script src="../../toefl/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../toefl/dist/js/demo.js"></script>
+
+  <!-- FastClick -->
+  <script src="../../toefl/plugins/fastclick/fastclick.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="../../toefl/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Toastr -->
+  <script src="../../toefl/plugins/toastr/toastr.min.js"></script>
+
 </body>
+
+<script type="text/javascript">
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  function input_soal() {
+    var soal = $('#soal').val();
+
+    var a = $('#jawabA').val();
+    var b = $('#jawabB').val();
+    var c = $('#jawabC').val();
+    var d = $('#jawabD').val();
+    var category = document.getElementById('category').value;
+    var penjelasan = $('#penjelasan').val();
+    jawaban = $("#jawaban:checked").val();
+
+    var action = "input_soal";
+
+    //console.log("Value : "+category);
+    $.ajax({
+      url: 'proses_soal.php',
+      type: 'POST',
+      data: {
+        a: a,
+        b: b,
+        c: c,
+        d: d,
+        soal: soal,
+        jawaban: jawaban,
+        penjelasan: penjelasan,
+        category: category,
+        action: action
+      },
+      success: function(response) {
+        console.log(response);
+        if (response.trim() == 'Berhasil') {
+          Toast.fire({
+            type: 'success',
+            title: 'Input Soal Berhasil'
+          })
+          window.location.href = "SoalTeks.php";
+        } else {
+          Toast.fire({
+            type: 'error',
+            title: 'Tidak di temukan'
+          })
+        }
+      },
+      error: function(response) {
+        console.log("error");
+      }
+    });
+  }
+</script>
 
 </html>
