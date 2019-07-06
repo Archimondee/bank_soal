@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<?php 
-  session_start();
-  if(isset($_SESSION['user_id']) == false){
-      header("Location: login.php");
-      die();
-    }
+<?php
+include('./php/config.php');
+session_start();
+if (isset($_SESSION['user_id']) == false) {
+  header("Location: login.php");
+  die();
+}
 ?>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,7 +94,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.php" class="nav-link ">
+                  <a href="./index.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Home</p>
                   </a>
@@ -104,31 +106,31 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./dataipa.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal IPA</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./datamtk.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal MTK</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./dataindo.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Indonesia</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./datainggris.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Inggris</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./logout.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Logout</p>
                   </a>
@@ -171,14 +173,20 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
+                  <?php
+                  $result = $con->query("SELECT COUNT(*) AS inggris FROM soal where id_category='inggris' ")->fetch_array();
+                  //var_dump($result['inggris']);
 
-                  <p>New Orders</p>
+                  echo "<h3>" . $result['inggris'] . "</h3>";
+                  ?>
+
+
+                  <p>Soal Bahasa Inggris</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="fa fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="./datainggris.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -186,14 +194,18 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <?php
+                  $result = $con->query("SELECT COUNT(*) AS indonesia FROM soal where id_category='indonesia' ")->fetch_array();
+                  //var_dump($result['inggris']);
 
-                  <p>Bounce Rate</p>
+                  echo "<h3>" . $result['indonesia'] . "</h3>";
+                  ?>
+                  <p>Soal Bahasa Indonesia</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="fa fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="./dataindo.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -201,14 +213,19 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <?php
+                  $result = $con->query("SELECT COUNT(*) AS ipa FROM soal where id_category='ipa' ")->fetch_array();
+                  //var_dump($result['inggris']);
 
-                  <p>User Registrations</p>
+                  echo "<h3>" . $result['ipa'] . "</h3>";
+                  ?>
+
+                  <p>Soal IPA</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="fa fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="./dataipa.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -216,14 +233,19 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <?php
+                  $result = $con->query("SELECT COUNT(*) AS mtk FROM soal where id_category='mtk' ")->fetch_array();
+                  //var_dump($result['inggris']);
 
-                  <p>Unique Visitors</p>
+                  echo "<h3>" . $result['mtk'] . "</h3>";
+                  ?>
+
+                  <p>Soal MTK</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fa fa-book"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="./datamtk.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

@@ -113,7 +113,7 @@ if (isset($_SESSION['user_id']) == false) {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./datamtk.php" class="nav-link active">
+                  <a href="./datamtk.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal MTK</p>
                   </a>
@@ -125,7 +125,7 @@ if (isset($_SESSION['user_id']) == false) {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./datainggris.php" class="nav-link">
+                  <a href="./datainggris.php" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Inggris</p>
                   </a>
@@ -172,7 +172,7 @@ if (isset($_SESSION['user_id']) == false) {
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Kumpulan Soal MTK</h3>
+                <h3 class="card-title">Kumpulan Soal B.Inggris</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -192,7 +192,7 @@ if (isset($_SESSION['user_id']) == false) {
                   <tbody>
                     <?php
                     include_once('php/config.php');
-                    $sql = "SELECT * from soal where id_category = 'mtk'";
+                    $sql = "SELECT * from soal where id_category = 'inggris'";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {

@@ -93,7 +93,7 @@ session_start();
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                       with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -104,7 +104,7 @@ session_start();
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.php" class="nav-link">
+                  <a href="./index.php" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Home</p>
                   </a>
@@ -116,31 +116,31 @@ session_start();
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./dataipa.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal IPA</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./datamtk.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal MTK</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./dataindo.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Indonesia</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./datainggris.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bank Soal B. Inggris</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="./logout.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Logout</p>
                   </a>
@@ -190,7 +190,7 @@ session_start();
                   <option value="ipa">Ilmu Pengetahuan Alam</option>
                   <option value="inggris">Bahasa Inggris</option>
                   <option value="mtk">Matematika</option>
-                  <option value="indo">Bahasa Indonesia</option>
+                  <option value="indonesia">Bahasa Indonesia</option>
                 </select>
               </div>
               <div class="form-group">
