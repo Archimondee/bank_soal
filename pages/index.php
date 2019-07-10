@@ -84,21 +84,21 @@ if (isset($_SESSION['user_id']) == false) {
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+            <li class="nav-item">
+              <a href="./index.php" class="nav-link active">
+                <i class=""></i>
+                <p>Home</p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview menu-close">
+              <a href="#" class="nav-link">
+                <i class=""></i>
                 <p>
-                  Dashboard
+                  Input & Bank Soal
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="./index.php" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Home</p>
-                  </a>
-                </li>
                 <li class="nav-item">
                   <a href="./SoalTeks.php" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
@@ -129,13 +129,146 @@ if (isset($_SESSION['user_id']) == false) {
                     <p>Bank Soal B. Inggris</p>
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview menu-close">
+              <a href="#" class="nav-link">
+                <i class=""></i>
+                <p>
+                  Materi Belajar
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./logout.php" class="nav-link">
+                  <a href="./upload_materi.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Logout</p>
+                    <p>Upload Materi</p>
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview menu-close">
+                  <a href="" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Materi Kelas 7
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=ipa&kelas=7" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi IPA</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=mtk&kelas=7" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi MTK</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=indonesia&kelas=7" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Indonesia</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=inggris&kelas=7" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Inggris</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview menu-close ">
+                  <a href="" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Materi Kelas 8
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=ipa&kelas=8" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi IPA</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=mtk&kelas=8" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi MTK</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=indonesia&kelas=8" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Indonesia</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=inggris&kelas=8" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Inggris</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview menu-close">
+                  <a href="" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Materi Kelas 9
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=ipa&kelas=9" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi IPA</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=mtk&kelas=9" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi MTK</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=indonesia&kelas=9" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Indonesia</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="datamateri.php?cat=inggris&kelas=9" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi B.Inggris</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+
+            </li>
+
+            <li class="nav-item">
+              <a href="./logout.php" class="nav-link">
+                <i class="far"></i>
+                <p>Logout</p>
+              </a>
             </li>
           </ul>
         </nav>

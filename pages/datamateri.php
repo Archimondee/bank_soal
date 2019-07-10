@@ -2,10 +2,29 @@
 <html>
 <?php
 session_start();
+include_once('./php/config.php');
 if (isset($_SESSION['user_id']) == false) {
   header("Location: login.php");
   die();
 }
+
+//Param asu
+if (isset($_GET['kelas'])) {
+  $kelas = $_GET['kelas'];
+  $cat = $_GET['cat'];
+  if ($cat == 'ipa') {
+    $category = 'IPA';
+  } else if ($cat == 'indonesia') {
+    $category = 'B.Indonesia';
+  } else if ($cat == 'mtk') {
+    $category = 'MTK';
+  } else if ($cat == 'inggris') {
+    $category = 'B.Inggris';
+  }
+} else {
+  //GET 404
+}
+
 ?>
 
 <head>
@@ -305,7 +324,7 @@ if (isset($_SESSION['user_id']) == false) {
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Kumpulan Soal B.Indonesia</h3>
+                <h3 class="card-title">Kumpulan Soal <?php echo $category ?></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -313,38 +332,32 @@ if (isset($_SESSION['user_id']) == false) {
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Soal</th>
-                      <th>Jawaban A</th>
-                      <th>Jawaban B</th>
-                      <th>Jawaban C</th>
-                      <th>Jawaban D</th>
-                      <th>Jawaban Soal</th>
-                      <th>Penjelasan</th>
+                      <th>Nama File</th>
+                      <th>Tipe File</th>
+                      <th>Size File</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     include_once('php/config.php');
-                    $sql = "SELECT * from soal where id_category = 'indonesia'";
+                    $sql = "SELECT * from materi where id_category='$cat' && kelas='$kelas'";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                       // output data of each row
                       $i = 1;
                       while ($row = $result->fetch_assoc()) {
-
+                        //<td><a href="'.$data['file'].'">'.$data['nama_file'].'</a></td>
                         echo "
                           <tr>
                             <td>" . $i . "</td>
-                            <td>" . $row['pertanyaan'] . "</td>
-                            <td>" . $row['jawaban_a'] . "</td>
-                            <td>" . $row['jawaban_b'] . "</td>
-                            <td>" . $row['jawaban_c'] . "</td>
-                            <td>" . $row['jawaban_d'] . "</td>
-                            <td>" . $row['jawaban'] . "</td>
-                            <td>" . $row['penjelasan'] . "</td>
+                            <td><a href=" . 'files/' . $row['file_name'] . ">" . $row['file_name'] . "</a></td>
+                            <td>" . $row['file_type'] . "</td>
+                            <td>" .formatBytes( $row['file_size'])  . "</td>
                           </tr>
-                        ";
+                          
+                          ";
+
                         $i + 1;
                       }
                     } else {
@@ -354,14 +367,12 @@ if (isset($_SESSION['user_id']) == false) {
                     ?>
                   </tbody>
                   <tfoot>
-                    <th>No</th>
-                    <th>Soal</th>
-                    <th>Jawaban A</th>
-                    <th>Jawaban B</th>
-                    <th>Jawaban C</th>
-                    <th>Jawaban D</th>
-                    <th>Jawaban Soal</th>
-                    <th>Penjelasan</th>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama File</th>
+                      <th>Tipe File</th>
+                      <th>Size File</th>
+                    </tr>
                   </tfoot>
                 </table>
               </div>

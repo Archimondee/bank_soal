@@ -2,10 +2,6 @@
 <html>
 <?php
 session_start();
-if (isset($_SESSION['user_id']) == false) {
-  header("Location: login.php");
-  die();
-}
 ?>
 
 <head>
@@ -15,10 +11,25 @@ if (isset($_SESSION['user_id']) == false) {
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../toefl/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="../../toefl/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../toefl/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../toefl/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../toefl/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../toefl/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../toefl/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../../toefl/plugins/summernote/summernote-bs4.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="../../toefl/plugins/sweetalert2/sweetalert2.min.css">
   <!-- Toastr -->
@@ -31,8 +42,6 @@ if (isset($_SESSION['user_id']) == false) {
   <link rel="stylesheet" href="../../toefl/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../toefl/plugins/datatables/dataTables.bootstrap4.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -290,7 +299,7 @@ if (isset($_SESSION['user_id']) == false) {
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item active">Teks Section</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -298,82 +307,65 @@ if (isset($_SESSION['user_id']) == false) {
       </div>
       <!-- /.content-header -->
 
+
+
+
       <!-- Main content -->
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Kumpulan Soal B.Indonesia</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Soal</th>
-                      <th>Jawaban A</th>
-                      <th>Jawaban B</th>
-                      <th>Jawaban C</th>
-                      <th>Jawaban D</th>
-                      <th>Jawaban Soal</th>
-                      <th>Penjelasan</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    include_once('php/config.php');
-                    $sql = "SELECT * from soal where id_category = 'indonesia'";
-                    $result = $con->query($sql);
-
-                    if ($result->num_rows > 0) {
-                      // output data of each row
-                      $i = 1;
-                      while ($row = $result->fetch_assoc()) {
-
-                        echo "
-                          <tr>
-                            <td>" . $i . "</td>
-                            <td>" . $row['pertanyaan'] . "</td>
-                            <td>" . $row['jawaban_a'] . "</td>
-                            <td>" . $row['jawaban_b'] . "</td>
-                            <td>" . $row['jawaban_c'] . "</td>
-                            <td>" . $row['jawaban_d'] . "</td>
-                            <td>" . $row['jawaban'] . "</td>
-                            <td>" . $row['penjelasan'] . "</td>
-                          </tr>
-                        ";
-                        $i + 1;
-                      }
-                    } else {
-                      echo "0 results";
-                    }
-
-                    ?>
-                  </tbody>
-                  <tfoot>
-                    <th>No</th>
-                    <th>Soal</th>
-                    <th>Jawaban A</th>
-                    <th>Jawaban B</th>
-                    <th>Jawaban C</th>
-                    <th>Jawaban D</th>
-                    <th>Jawaban Soal</th>
-                    <th>Penjelasan</th>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+      <div class="col-sm-6">
+        <?php
+        if (isset($_SESSION['message'])) {
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+        }
+        ?>
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h5><i class="icon fas fa-info"></i> Alert!</h5>
+          Pastikan nama file tidak mengandung spasi.
+          Pisahkan spasi dengan _ (Underscore) atau simbol lainnya.
         </div>
-        <!-- /.row -->
-      </section>
-      <!-- /.content -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Input Soal UN SMP</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form action="proses_materi.php" role="form" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+              <div class="form-group">
+                <label>Pilih Kelas</label>
+                <select class="form-control" id="kelas" name="kelas">
+                  <option value="7">Kelas 7</option>
+                  <option value="8">Kelas 8</option>
+                  <option value="9">Kelas 9</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Pilih Kategori</label>
+                <select class="form-control" id="category" name="category">
+                  <option value="IPA">Ilmu Pengetahuan Alam</option>
+                  <option value="INGGRIS">Bahasa Inggris</option>
+                  <option value="MTK">Matematika</option>
+                  <option value="INDONESIA">Bahasa Indonesia</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">File Materi (PDF, WORD, Excel)</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" id="file" name="file">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button onclick="" type="submit" class="btn btn-primary" name="upload">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -401,39 +393,100 @@ if (isset($_SESSION['user_id']) == false) {
   <script>
     $.widget.bridge('uibutton', $.ui.button)
   </script>
-  <!-- jQuery -->
-  <script src="../../toefl/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../../toefl/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../../toefl/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="../../toefl/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="../../toefl/plugins/sparklines/sparkline.js"></script>
+  <!-- JQVMap -->
+  <script src="../../toefl/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="../../toefl/plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="../../toefl/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="../../toefl/plugins/moment/moment.min.js"></script>
+  <script src="../../toefl/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="../../toefl/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Summernote -->
+  <script src="../../toefl/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="../../toefl/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- FastClick -->
+  <script src="../../toefl/plugins/fastclick/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../toefl/dist/js/adminlte.js"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="../../toefl/dist/js/pages/dashboard.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../toefl/dist/js/demo.js"></script>
+
   <!-- FastClick -->
   <script src="../../toefl/plugins/fastclick/fastclick.js"></script>
   <!-- SweetAlert2 -->
   <script src="../../toefl/plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="../../toefl/plugins/toastr/toastr.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../../toefl/dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../../toefl/dist/js/demo.js"></script>
-  <!-- DataTables -->
-  <script src="../../toefl/plugins/datatables/jquery.dataTables.js"></script>
-  <script src="../../toefl/plugins/datatables/dataTables.bootstrap4.js"></script>
-  <!-- page script -->
-  <script>
-    $(function() {
-      $("#example1").DataTable();
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-      });
-    });
-  </script>
+
 </body>
+
+<script type="text/javascript">
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  function input_soal() {
+    var soal = $('#soal').val();
+
+    var a = $('#jawabA').val();
+    var b = $('#jawabB').val();
+    var c = $('#jawabC').val();
+    var d = $('#jawabD').val();
+    var category = document.getElementById('category').value;
+    var penjelasan = $('#penjelasan').val();
+    jawaban = $("#jawaban:checked").val();
+
+    var action = "input_soal";
+
+    //console.log("Value : "+category);
+    $.ajax({
+      url: 'proses_soal.php',
+      type: 'POST',
+      data: {
+        a: a,
+        b: b,
+        c: c,
+        d: d,
+        soal: soal,
+        jawaban: jawaban,
+        penjelasan: penjelasan,
+        category: category,
+        action: action
+      },
+      success: function(response) {
+        console.log(response);
+        if (response.trim() == 'Berhasil') {
+          Toast.fire({
+            type: 'success',
+            title: 'Input Soal Berhasil'
+          })
+          window.location.href = "SoalTeks.php";
+        } else {
+          Toast.fire({
+            type: 'error',
+            title: 'Tidak di temukan'
+          })
+        }
+      },
+      error: function(response) {
+        console.log("error");
+      }
+    });
+  }
+</script>
 
 </html>
